@@ -74,10 +74,10 @@ public class User implements Serializable {
         this.net_worth = net_worth;
     }
 
-    public void buyStock(Stock s) {
-        s.setUser(this);
-        stockNames.add(s);
-    }
+//    public void buyStock(Stock s) {
+//        s.setUser(this);
+//        stockNames.add(s);
+//    }
 
     /*public void sellStock(Stock s) {
         s.setUser(this);
@@ -86,7 +86,8 @@ public class User implements Serializable {
 
 
     // Adding relationships
-    @OneToMany(mappedBy="user", cascade={CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="user_id", referencedColumnName="id")
+    @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
     @JsonIgnore
     private List<Stock> stockNames = new ArrayList<Stock>();
 

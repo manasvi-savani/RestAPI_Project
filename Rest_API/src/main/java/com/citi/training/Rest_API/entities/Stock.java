@@ -3,15 +3,16 @@ package com.citi.training.Rest_API.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "stocks_table")
-public class Stock {
+public class Stock implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id") private Integer id;
-    //@Column(name = "user_id") private Integer user_id;
+    @Column(name = "user_id") private Integer user_id;
     @Column(name = "stock_name")private String stock_name;
     @Column(name = "quantity")private Integer quantity;
     @Column(name = "sale_price")private Double sale_price;
@@ -21,6 +22,14 @@ public class Stock {
     @Column(name = "cost")private Double cost;
     @Column(name = "market_value")private Double market_value;
     @Column(name = "totalGainLoss")private Double totalGainLoss;
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
 
     public Integer getId() {
         return id;
@@ -102,9 +111,9 @@ public class Stock {
         this.totalGainLoss = totalGainLoss;
     }
 
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne
-    @JsonIgnore
+//    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+//    @ManyToOne
+//    @JsonIgnore
     public User user;
 
     public User getUser(){
@@ -117,10 +126,11 @@ public class Stock {
 
     public Stock(){}
 
-    public Stock(int id, String stock_name, int quantity, double sale_price,
+    public Stock(int id, int user_id, String stock_name, int quantity, double sale_price,
                  double current_price, double open_price, double close_price,
                  double cost, double market_value, double totalGainLoss, User user){
         this.id = id;
+        this.user_id = user_id;
         this.stock_name = stock_name;
         this.quantity = quantity;
         this.sale_price = sale_price;

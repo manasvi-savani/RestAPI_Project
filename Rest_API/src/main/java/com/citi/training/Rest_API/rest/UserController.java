@@ -19,4 +19,6 @@ public class UserController {
     Collection<User> getUsers() {
         return userService.getAllUsers();
     }
+
+
 }
