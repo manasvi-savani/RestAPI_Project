@@ -2,7 +2,7 @@ package com.citi.training.Rest_API;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-// TESTING - WESBERT EDOUARD
+// ERROR
 @SpringBootApplication
 public class RestApiApplication {
 
