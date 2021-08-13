@@ -1,6 +1,7 @@
 package com.citi.training.Rest_API.service;
 
 import com.citi.training.Rest_API.entities.User;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Collection;
 
