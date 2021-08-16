@@ -4,8 +4,8 @@ import com.citi.training.Rest_API.entities.Stock;
 import com.citi.training.Rest_API.entities.User;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface UserService {
-    Collection<User> getAllUsers();
+    List<User> getAllUsers();
 }

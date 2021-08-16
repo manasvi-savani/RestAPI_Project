@@ -1,7 +1,5 @@
 package com.citi.training.Rest_API.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -21,7 +19,15 @@ public class Stock implements Serializable {
     @Column(name = "close_price")private Double close_price;
     @Column(name = "cost")private Double cost;
     @Column(name = "market_value")private Double market_value;
-    @Column(name = "totalGainLoss")private Double totalGainLoss;
+    @Column(name = "gain_loss")private Double gain_loss;
+
+    public Double getGain_loss() {
+        return gain_loss;
+    }
+
+    public void setGain_loss(Double gain_loss) {
+        this.gain_loss = gain_loss;
+    }
 
     public Integer getUser_id() {
         return user_id;
@@ -103,32 +109,14 @@ public class Stock implements Serializable {
         this.market_value = market_value;
     }
 
-    public Double getTotalGainLoss() {
-        return totalGainLoss;
-    }
 
-    public void setTotalGainLoss(Double totalGainLoss) {
-        this.totalGainLoss = totalGainLoss;
-    }
-
-//    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-//    @ManyToOne
-//    @JsonIgnore
-    public User user;
-
-    public User getUser(){
-        return user;
-    }
-
-    public void setUser(User user){
-        this.user = user;
-    }
+    public void setStock(User user){}
 
     public Stock(){}
 
     public Stock(int id, int user_id, String stock_name, int quantity, double sale_price,
                  double current_price, double open_price, double close_price,
-                 double cost, double market_value, double totalGainLoss, User user){
+                 double cost, double market_value, double gain_loss){
         this.id = id;
         this.user_id = user_id;
         this.stock_name = stock_name;
@@ -139,8 +127,7 @@ public class Stock implements Serializable {
         this.close_price = close_price;
         this.cost = cost;
         this.market_value = market_value;
-        this.totalGainLoss = totalGainLoss;
-        this.user = user;
+        this.gain_loss = gain_loss;
 
     }
 }

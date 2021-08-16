@@ -74,28 +74,22 @@ public class User implements Serializable {
         this.net_worth = net_worth;
     }
 
-//    public void buyStock(Stock s) {
-//        s.setUser(this);
-//        stockNames.add(s);
-//    }
+    public void addStock(Stock s){
+        s.setStock(this);
+        stockNames.add(s);
 
-    /*public void sellStock(Stock s) {
-        s.setUser(this);
-        stockNames.remove(s);
-    }*/
-
-
+    }
     // Adding relationships
     @JoinColumn(name="user_id", referencedColumnName="id")
     @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-    @JsonIgnore
+
     private List<Stock> stockNames = new ArrayList<Stock>();
 
     public List<Stock> getStockNames() {
         return stockNames;
     }
 
-    public void setStockNames(List<Stock> trackTitles) {
-        this.stockNames = trackTitles;
+    public void setStockNames(List<Stock> stockNames) {
+        this.stockNames = stockNames;
     }
 }
