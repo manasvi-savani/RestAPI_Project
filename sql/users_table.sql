@@ -1,5 +1,9 @@
+USE conygre;
+DROP TABLE stocks_table;
+DROP TABLE users_table;
+
 CREATE TABLE `conygre`.`users_table` (
-                                         `id` INT NOT NULL,
+                                         `id` INT NOT NULL auto_increment,
                                          `Name` VARCHAR(45) NOT NULL,
                                          `Cash_value` DOUBLE NOT NULL,
                                          `Investment_value` DOUBLE NOT NULL,
