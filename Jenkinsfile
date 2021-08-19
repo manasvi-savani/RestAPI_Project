@@ -1,4 +1,4 @@
-def projectName = 'Rest_API'
+def projectName = 'restapi'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
 
