@@ -17,7 +17,7 @@ INSERT INTO `conygre`.`users_table` (`id`, `Name`, `Cash_value`, `Investment_val
 
 CREATE TABLE stocks_table (
                               id int primary key auto_increment,
-                              user_id int not null,
+                              user_id int not null auto_increment,
                               stock_name VARCHAR(45),
                               quantity int not null,
                               sale_price double not null,

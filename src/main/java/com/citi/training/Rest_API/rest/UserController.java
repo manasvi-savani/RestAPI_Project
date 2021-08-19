@@ -31,4 +31,14 @@ public class UserController {
 //        return userService.getUsersByStock(stock);
 //    }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void deleteUser(@PathVariable("id") int id) {
+        userService.deleteUser(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteUser(@RequestBody User user) {
+        userService.deleteUser(user);
+    }
+
 }
