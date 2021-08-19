@@ -48,4 +48,13 @@ public class UserServiceImpl implements UserService {
 //    }
 
 
+    public void deleteUser(int  id) {
+        User user = userRepository.findById(id).get();
+        deleteUser(user);
+    }
+    
+    public void deleteUser(User user) {
+        userRepository.delete(user);
+    }
+
 }
