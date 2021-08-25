@@ -1,0 +1,9 @@
+POST http://localhost:8080/users
+Content-type: application/json
+
+{
+  "name" : "Commissioner",
+  "cash_value" : "2000",
+  "investment_value" : "4054",
+  "net_worth": "3000"
+}
