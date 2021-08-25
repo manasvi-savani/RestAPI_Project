@@ -30,6 +30,22 @@ CREATE TABLE stocks_table (
 
 );
 
+CREATE TABLE transaction_table (
+                                   id int primary key auto_increment,
+                                   user_id int not null,
+                                   stock_id int not null,
+                                   stock_name VARCHAR(45),
+                                   transaction_type VARCHAR(4),
+                                   quantity int not null,
+                                   transaction_date VARCHAR(45),
+                                   FOREIGN KEY (user_id) REFERENCES users_table(id),
+                                   FOREIGN KEY (stock_id) REFERENCES stocks_table(id)
+
+
+);
+
+INSERT INTO `conygre`.`transaction_table` (`id`, `user_id`, `stock_id`, `stock_name`, `transaction_type`, `quantity`, `transaction_date`) VALUES ('1', '1', '2', 'DIS', 'BUY', '3', '2021-8-25');
+
 use conygre;
 INSERT INTO stocks_table  VALUES ('1', '1', 'WFC', '3', '50.00', '45.25','51.72', '48.79', '52.39', '13.76','679');
 

@@ -1,5 +1,6 @@
 package com.citi.training.Rest_API.rest;
 
+import com.citi.training.Rest_API.entities.Stock;
 import com.citi.training.Rest_API.entities.User;
 import com.citi.training.Rest_API.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,6 @@ public class UserController {
     public List<User> getUserByName(@PathVariable("name") String name) {
         return userService.getUserByName(name);
     }
+
 
 }
