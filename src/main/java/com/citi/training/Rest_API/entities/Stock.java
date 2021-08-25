@@ -68,7 +68,7 @@ public class Stock implements Serializable {
     public void setSale_price(Double sale_price) {
         this.sale_price = sale_price;
     }
-
+//
     public Double getCurrent_price() {
         return current_price;
     }
