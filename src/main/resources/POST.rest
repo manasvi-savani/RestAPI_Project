@@ -7,3 +7,5 @@ Content-type: application/json
   "investment_value" : "4054",
   "net_worth": "3000"
 }
+
+

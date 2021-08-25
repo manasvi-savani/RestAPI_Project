@@ -12,4 +12,7 @@ public interface UserService {
     User addNewUser(User user);
     void deleteUser(int id);
     void deleteUser(User user);
+
+    List<User> getUserByName(String name);
+    //User getUserByName(String name);
 }

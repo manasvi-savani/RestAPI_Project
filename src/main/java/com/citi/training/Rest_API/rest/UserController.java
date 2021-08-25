@@ -3,6 +3,8 @@ package com.citi.training.Rest_API.rest;
 import com.citi.training.Rest_API.entities.User;
 import com.citi.training.Rest_API.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,10 +28,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST)
     public void addUser(@RequestBody User user){ userService.addNewUser(user); }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/{stock}")
-//    public User getStocks(@PathVariable("stock") String stock) {
-//        return userService.getUsersByStock(stock);
-//    }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deleteUser(@PathVariable("id") int id) {
@@ -39,6 +37,10 @@ public class UserController {
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteUser(@RequestBody User user) {
         userService.deleteUser(user);
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "/name/{name}")
+    public List<User> getUserByName(@PathVariable("name") String name) {
+        return userService.getUserByName(name);
     }
 
 }
