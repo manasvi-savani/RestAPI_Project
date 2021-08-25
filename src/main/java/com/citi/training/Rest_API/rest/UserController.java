@@ -1,6 +1,8 @@
 package com.citi.training.Rest_API.rest;
 
+import com.citi.training.Rest_API.entities.Stock;
 import com.citi.training.Rest_API.entities.User;
+import com.citi.training.Rest_API.service.StockService;
 import com.citi.training.Rest_API.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +18,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private StockService stockService;
+
     @GetMapping
     List<User> getUsers() {
         return userService.getAllUsers();
     }
-
+    @RequestMapping(method = RequestMethod.GET, value = "/stocks")
+    List<Stock> getStocks() {
+        return stockService.getAllStock();
+    }
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public User getUser(@PathVariable("id") int id) {
         return userService.getUserById(id);

@@ -1,6 +1,8 @@
 package com.citi.training.Rest_API.service;
 
+import com.citi.training.Rest_API.entities.Stock;
 import com.citi.training.Rest_API.entities.User;
+import com.citi.training.Rest_API.repo.StockRepository;
 import com.citi.training.Rest_API.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +20,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
 
     @Override
     public User getUserById(int id) {
@@ -52,6 +56,8 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserByName(String name) {
         return userRepository.findByName(name);
     }
+
+
 
 
 }
