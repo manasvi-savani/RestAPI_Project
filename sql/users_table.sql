@@ -12,12 +12,11 @@ CREATE TABLE `conygre`.`users_table` (
 ;
 
 INSERT INTO `conygre`.`users_table` (`id`, `Name`, `Cash_value`, `Investment_value`, `Net_worth`) VALUES ('1', 'John Smith', '1000', '500', '1500');
-INSERT INTO `conygre`.`users_table` (`id`, `Name`, `Cash_value`, `Investment_value`, `Net_worth`) VALUES ('2', 'Jane Doe', '2053', '749', '10000');
-INSERT INTO `conygre`.`users_table` (`id`, `Name`, `Cash_value`, `Investment_value`, `Net_worth`) VALUES ('3', 'Gary Snowball', '5784', '2053', '15000');
+
 
 CREATE TABLE stocks_table (
                               id int primary key auto_increment,
-                              user_id int not null auto_increment,
+                              user_id int not null,
                               stock_name VARCHAR(45),
                               quantity int not null,
                               sale_price double not null,
@@ -33,5 +32,21 @@ CREATE TABLE stocks_table (
 
 use conygre;
 INSERT INTO stocks_table  VALUES ('1', '1', 'WFC', '3', '50.00', '45.25','51.72', '48.79', '52.39', '13.76','679');
-INSERT INTO stocks_table  VALUES ('2', '2', 'DIS', '5', '42.44', '40.98', '39.88', '41.12', '40.98', '3.00','4564');
-INSERT INTO stocks_table VALUES ('3', '3', 'JPM', '2', '56.76', '34.33', '45.80', '43.12', '39.90', '5.00','5743');
+
+
+
+DROP TRIGGER IF EXISTS `conygre`.`users_table_BEFORE_DELETE`;
+
+DELIMITER $$
+USE `conygre`$$
+CREATE TRIGGER `users_table_BEFORE_DELETE` BEFORE DELETE ON `users_table` FOR EACH ROW BEGIN
+    DELETE FROM stocks_table where user_id = OLD.id;
+    END$$
+    DELIMITER ;
+
+    INSERT INTO stocks_table  VALUES ('5', '1', 'WFC', '3', '50.00', '40.54','51.72', '39.45', '52.39', '13.76','679');
+    INSERT INTO stocks_table  VALUES ('4', '1', 'WFC', '3', '50.00', '78.35','51.72', '78.59', '52.39', '13.76','679');
+    INSERT INTO stocks_table  VALUES ('6', '1', 'WFC', '3', '50.00', '4.75','51.72', '4.23', '52.39', '13.76','679');
+    INSERT INTO stocks_table  VALUES ('7', '1', 'WFC', '3', '50.00', '46.32','51.72', '44.43', '52.39', '13.76','679');
+    INSERT INTO stocks_table  VALUES ('8', '1', 'WFC', '3', '50.00', '78.35','51.72', '71.43', '52.39', '13.76','679');
+
