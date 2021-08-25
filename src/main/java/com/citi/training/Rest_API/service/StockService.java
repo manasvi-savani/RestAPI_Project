@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface StockService {
     List<Stock> getAllStock();
+    List<Stock> getTop5Stock();
+    List<Stock> getLoser5Stock();
 }

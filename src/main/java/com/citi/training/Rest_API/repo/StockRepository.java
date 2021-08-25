@@ -13,7 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StockRepository extends JpaRepository<Stock, Integer> {
+    @Query(value = "SELECT * FROM stocks_table ORDER BY gain_loss DESC LIMIT 5", nativeQuery = true)
+    List<Stock> findTopByGain_loss();
 
+    @Query(value = "SELECT * FROM stocks_table ORDER BY gain_loss ASC LIMIT 5", nativeQuery = true)
+    List<Stock> findLoserByGain_loss();
 
 
 }

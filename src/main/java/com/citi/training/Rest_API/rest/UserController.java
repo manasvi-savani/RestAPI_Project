@@ -52,5 +52,10 @@ public class UserController {
         return userService.getUserByName(name);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/top5")
+    List<Stock> getTop5Stock() {    return stockService.getTop5Stock();}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/loser5")
+        List<Stock> getLoser5Stock() {    return stockService.getLoser5Stock();}
 
 }

@@ -20,5 +20,7 @@ public class StockServiceImpl implements StockService{
         return stockRepository.findAll();
     }
 
+    public List<Stock> getTop5Stock() {  return stockRepository.findTopByGain_loss();}
+    public List<Stock> getLoser5Stock() {   return stockRepository.findLoserByGain_loss();}
 
 }
