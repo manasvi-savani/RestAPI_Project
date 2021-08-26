@@ -15,11 +15,20 @@ public class Stock implements Serializable {
     @Column(name = "quantity")private Integer quantity;
     @Column(name = "sale_price")private Double sale_price;
     @Column(name = "current_price")private Double current_price;
-    @Column(name = "open_price")private Double open_price;
     @Column(name = "close_price")private Double close_price;
     @Column(name = "cost")private Double cost;
     @Column(name = "market_value")private Double market_value;
     @Column(name = "gain_loss")private Double gain_loss;
+
+    public Double getTotal_gain_loss() {
+        return total_gain_loss;
+    }
+
+    public void setTotal_gain_loss(Double total_gain_loss) {
+        this.total_gain_loss = total_gain_loss;
+    }
+
+    @Column(name = "total_gain_loss")private Double total_gain_loss;
 
     public Double getGain_loss() {
         return gain_loss;
@@ -77,14 +86,6 @@ public class Stock implements Serializable {
         this.current_price = current_price;
     }
 
-    public Double getOpen_price() {
-        return open_price;
-    }
-
-    public void setOpen_price(Double open_price) {
-        this.open_price = open_price;
-    }
-
     public Double getClose_price() {
         return close_price;
     }
@@ -115,19 +116,18 @@ public class Stock implements Serializable {
     public Stock(){}
 
     public Stock(int id, int user_id, String stock_name, int quantity, double sale_price,
-                 double current_price, double open_price, double close_price,
-                 double cost, double market_value, double gain_loss){
+                 double current_price, double close_price,
+                 double cost, double market_value, double gain_loss, double total_gain_loss){
         this.id = id;
         this.user_id = user_id;
         this.stock_name = stock_name;
         this.quantity = quantity;
         this.sale_price = sale_price;
         this.current_price = current_price;
-        this.open_price = open_price;
         this.close_price = close_price;
         this.cost = cost;
         this.market_value = market_value;
         this.gain_loss = gain_loss;
-
+        this.total_gain_loss = total_gain_loss;
     }
 }

@@ -57,4 +57,18 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByName(name);
     }
 
+    @Override
+    public double total_cash(){
+        return userRepository.findtotalCash();
+    }
+
+    @Override
+    public double total_networth(){
+        return userRepository.findtotalNetWorth();
+    }
+
+    @Override
+    public double total_investment(){
+        return userRepository.findtotalinvestment();
+    }
 }

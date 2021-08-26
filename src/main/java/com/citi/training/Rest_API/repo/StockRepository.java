@@ -20,4 +20,5 @@ public interface StockRepository extends JpaRepository<Stock, Integer> {
     List<Stock> findLoserByGain_loss();
 
 
+
 }

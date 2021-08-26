@@ -14,7 +14,16 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-      //@Query("SELECT s from User where s.name = :name")
-      public List<User> findByName(String name);
+      List<User> findByName(String name);
+
+      @Query(value = "SELECT SUM(Cash_value) FROM users_table", nativeQuery = true)
+      double findtotalCash();
+
+      @Query(value = "SELECT Net_worth FROM users_table", nativeQuery = true)
+      double findtotalNetWorth();
+
+      @Query(value = "SELECT Investment_value FROM users_table", nativeQuery = true)
+      double findtotalinvestment();
+
 
 }
