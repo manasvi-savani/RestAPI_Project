@@ -1,6 +1,7 @@
 USE conygre;
 DROP TABLE stocks_table;
 DROP TABLE users_table;
+DROP TABLE transaction_table;
 
 CREATE TABLE `conygre`.`users_table` (
                                          `id` INT NOT NULL auto_increment,
@@ -37,7 +38,7 @@ CREATE TABLE transaction_table (
                                    stock_name VARCHAR(45),
                                    transaction_type VARCHAR(4),
                                    quantity int not null,
-                                   transaction_date VARCHAR(45),
+                                   transaction_date DATE,
                                    FOREIGN KEY (user_id) REFERENCES users_table(id),
                                    FOREIGN KEY (stock_id) REFERENCES stocks_table(id)
 
@@ -46,8 +47,14 @@ CREATE TABLE transaction_table (
 
 INSERT INTO `conygre`.`transaction_table` (`id`, `user_id`, `stock_id`, `stock_name`, `transaction_type`, `quantity`, `transaction_date`) VALUES ('1', '1', '2', 'DIS', 'BUY', '3', '2021-8-25');
 
+INSERT INTO transaction_table VALUES ('1', '1', '1', 'WFC', 'BUY', '10', '2021-8-25');
+INSERT INTO transaction_table VALUES ('2', '1', '2', 'WFC', 'BUY', '10', '2021-8-27');
+INSERT INTO transaction_table VALUES ('3', '1', '2', 'WFC', 'SELL', '10', '2021-8-28');
+INSERT INTO transaction_table VALUES ('4', '1', '2', 'WFC', 'SELL', '10', '2021-8-30');
+
 use conygre;
 INSERT INTO stocks_table  VALUES ('1', '1', 'WFC', '3', '50.00', '45.25','51.72', '48.79', '52.39', '13.76','679');
+INSERT INTO stocks_table  VALUES ('2', '1', 'WFC', '3', '50.00', '45.25','51.72', '48.79', '52.39', '13.76','679');
 
 
 
@@ -65,4 +72,3 @@ CREATE TRIGGER `users_table_BEFORE_DELETE` BEFORE DELETE ON `users_table` FOR EA
     INSERT INTO stocks_table  VALUES ('6', '1', 'WFC', '3', '50.00', '4.75','51.72', '4.23', '52.39', '13.76','679');
     INSERT INTO stocks_table  VALUES ('7', '1', 'WFC', '3', '50.00', '46.32','51.72', '44.43', '52.39', '13.76','679');
     INSERT INTO stocks_table  VALUES ('8', '1', 'WFC', '3', '50.00', '78.35','51.72', '71.43', '52.39', '13.76','679');
-

@@ -1,14 +1,17 @@
 package com.citi.training.Rest_API.rest;
 
 import com.citi.training.Rest_API.entities.Stock;
+import com.citi.training.Rest_API.entities.Transaction;
 import com.citi.training.Rest_API.entities.User;
 import com.citi.training.Rest_API.service.StockService;
+import com.citi.training.Rest_API.service.TransactionService;
 import com.citi.training.Rest_API.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -20,6 +23,9 @@ public class UserController {
 
     @Autowired
     private StockService stockService;
+
+    @Autowired
+    private TransactionService transactionService;
 
     @GetMapping
     List<User> getUsers() {
@@ -57,5 +63,11 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/loser5")
         List<Stock> getLoser5Stock() {    return stockService.getLoser5Stock();}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/buyInRange/{date1}/{date2}")
+    List<Transaction> getBuyStocksInRange(@PathVariable("date1") Date date1, @PathVariable("date2") Date date2) {    return transactionService.getBuyStocksInRange(date1, date2);}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/sellInRange/{date1}/{date2}")
+    List<Transaction> getSellStocksInRange(@PathVariable("date1") Date date1, @PathVariable("date2") Date date2) {    return transactionService.getSellStocksInRange(date1, date2);}
 
 }

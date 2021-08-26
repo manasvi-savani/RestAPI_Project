@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 
 @Entity
@@ -22,12 +23,12 @@ public class Transaction implements Serializable {
     @Column(name="stock_name") private String stock_name;
     @Column(name="transaction_type") private String transaction_type;
     @Column(name="quantity") private int quantity;
-    @Column(name="transaction_date") private String transaction_date;
+    @Column(name="transaction_date") private Date transaction_date;
 
     public Transaction() {
     }
 
-    public Transaction(int id, int user_id, int stock_id, String stock_name, String transaction_type, int quantity, String transaction_date) {
+    public Transaction(int id, int user_id, int stock_id, String stock_name, String transaction_type, int quantity, Date transaction_date) {
         this.id = id;
         this.user_id = user_id;
         this.stock_id = stock_id;
@@ -85,11 +86,11 @@ public class Transaction implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getTransaction_date() {
+    public Date getTransaction_date() {
         return transaction_date;
     }
 
-    public void setTransaction_date(String transaction_date) {
+    public void setTransaction_date(Date transaction_date) {
         this.transaction_date = transaction_date;
     }
 }
