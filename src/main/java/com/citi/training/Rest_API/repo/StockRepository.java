@@ -19,6 +19,10 @@ public interface StockRepository extends JpaRepository<Stock, Integer> {
     @Query(value = "SELECT * FROM stocks_table ORDER BY gain_loss ASC LIMIT 5", nativeQuery = true)
     List<Stock> findLoserByGain_loss();
 
+    @Query(value = "SELECT SUM(total_gain_loss) FROM stocks_table", nativeQuery = true)
+    double findtotal_gain_loss();
 
+    @Query(value = "SELECT SUM(gain_loss) FROM stocks_table", nativeQuery = true)
+    double findgain_loss();
 
 }

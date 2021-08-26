@@ -93,4 +93,10 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/investment")
     public double getTotal_Investment() {    return userService.total_investment();}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tgainloss")
+    public double getTotal_GainLoss() {    return stockService.totalGL();}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/todaygl")
+    public double getGainLoss() {    return stockService.getgainloss();}
 }

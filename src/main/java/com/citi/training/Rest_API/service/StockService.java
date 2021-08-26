@@ -9,4 +9,6 @@ public interface StockService {
     List<Stock> getAllStock();
     List<Stock> getTop5Stock();
     List<Stock> getLoser5Stock();
+    double totalGL();
+    double getgainloss();
 }
